@@ -2,10 +2,19 @@
   angular.module('ngtodos') //getter
         .controller('MainController', MainController);
 
+  MainController.$inject = ['$scope', 'TodoService'];
 
-  MainController.$inject = [];
+  function MainController($scope, TodoService){
+    $scope.message = 'Hey now! What is that sound?'
 
-  function MainController(){
-    console.log('Main!');
+    var todos;
+    TodoService.readAll()
+              .then(function(){
+                todos = TodoService.todos;
+                console.log(todos);
+              });
+
+    console.log(todos);
+
   }
 })();
