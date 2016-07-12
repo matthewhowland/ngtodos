@@ -5,13 +5,12 @@
   TodoService.$inject = ['$http'];
 
   function TodoService($http){
-    var todos = [];
     var o = {
       create: createTodo,
       readAll: getAll,
       update: updateTodo,
-      delete:deleteTodo,
-
+      delete: deleteTodo,
+      todos: []
     };
     return o;
 
@@ -20,7 +19,6 @@
       return $http.get('https://quiet-refuge-27140.herokuapp.com/todos')
                   .then(function(response){
                     todos = response.data;
-                    return todos;
                   });
     }
     function updateTodo(){}
