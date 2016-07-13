@@ -5,18 +5,18 @@
   MainController.$inject = ['$scope', 'TodoService'];
 
   function MainController($scope, TodoService){
-    $scope.message = 'Hey now! What is that sound?'
+    $scope.todos = TodoService.todos;
+    getTodos();
+    console.log('here')
+    function getTodos(){
+      TodoService.readAll()
+                .then(function(){
+                  $scope.todos = TodoService.todos;
+                  console.log($scope.todos);
+                })
+    }
 
-    var todos;
-    TodoService.readAll()
-              .then(function(){
-                todos = TodoService.todos;
-                console.log(todos);
-              });
 
-TodoService.create();
-TodoService.delete();
-TodoService.update();
 
-  }
+    }
 })();

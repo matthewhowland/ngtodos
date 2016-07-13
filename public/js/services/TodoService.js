@@ -5,7 +5,7 @@
   TodoService.$inject = ['$http'];
 
   function TodoService($http){
-    var baseUrl = 'https://quiet-refuge-27140.herokuapp.com/'
+    var baseUrl = 'https://quiet-refuge-27140.herokuapp.com/';
     var o = {
       create: createTodo,
       readAll: getAll,
