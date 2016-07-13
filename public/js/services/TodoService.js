@@ -28,7 +28,7 @@
     function getAll(){
       return $http.get(baseUrl + 'todos')
                   .then(function(response){
-                    todos = response.data;
+                    o.todos = response.data;
                   });
     }
     // var newTodo = {

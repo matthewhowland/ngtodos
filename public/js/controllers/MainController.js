@@ -6,9 +6,12 @@
 
   function MainController($scope, TodoService){
     $scope.todos = TodoService.todos;
+    $scope.create = createTodo;
     getTodos();
-    console.log('here')
+
+
     function getTodos(){
+      console.log('getting todos...');
       TodoService.readAll()
                 .then(function(){
                   $scope.todos = TodoService.todos;
@@ -17,6 +20,13 @@
     }
 
 
-
+    function createTodo(description){
+      TodoService.create(description)
+                .then(function(){
+                  $scope.todos = TodoService.todos;
+                  $scope.description = '';
+                  getTodos();
+                })
+    }
     }
 })();

@@ -12,16 +12,16 @@
       <div class="col-md-8 col-md-offset-2">
         <div class="form-group">
           <label>Description:</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" ng-model='description'>
         </div>
       </div>
       <div class="col-md-8 col-md-offset-2">
-        <button class="btn btn-warning btn-block">Create</button>
+        <button class="btn btn-warning btn-block" ng-click='create(description)'>Create</button>
       </div>
     </div>
 
     <pre>
-    {{ todos | json}}
+    {{ todos | json }}
     </pre>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script>
