@@ -5,6 +5,7 @@
   TodoService.$inject = ['$http'];
 
   function TodoService($http){
+    var baseUrl = 'https://quiet-refuge-27140.herokuapp.com/'
     var o = {
       create: createTodo,
       readAll: getAll,
@@ -14,14 +15,37 @@
     };
     return o;
 
-    function createTodo(){}
+    function createTodo(desc){
+      var info = {
+        description: desc
+      }
+
+      return $http.post(baseUrl+'todos', info)
+                  .then(function(response){
+                    getAll();
+                  });
+    }
     function getAll(){
-      return $http.get('https://quiet-refuge-27140.herokuapp.com/todos')
+      return $http.get(baseUrl + 'todos')
                   .then(function(response){
                     todos = response.data;
                   });
     }
-    function updateTodo(){}
-    function deleteTodo(){}
+    // var newTodo = {
+    //   id:
+    // }
+    function updateTodo(id, newTodo){
+      return $http.put(baseUrl+'todos/'+id, newTodo)
+            .then(function(response){
+              console.log(response);
+              getAll();
+            });
+    }
+    function deleteTodo(id){}
+      return $http.delete(baseUrl+'todos/'+id)
+                  .then(function(response){
+                    console.log(response);
+                    getAll();
+                  })
   }
 })()
