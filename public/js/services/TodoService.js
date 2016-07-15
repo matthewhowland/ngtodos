@@ -31,9 +31,7 @@
                     o.todos = response.data;
                   });
     }
-    // var newTodo = {
-    //   id:
-    // }
+
     function updateTodo(id, newTodo){
       return $http.put(baseUrl+'todos/'+id, newTodo)
             .then(function(response){
@@ -41,11 +39,12 @@
               getAll();
             });
     }
-    function deleteTodo(id){}
+    function deleteTodo(id){
       return $http.delete(baseUrl+'todos/'+id)
                   .then(function(response){
-                    console.log(response);
+                    console.log('delete', response);
                     getAll();
                   })
   }
+}
 })()
